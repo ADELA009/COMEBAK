@@ -16,14 +16,14 @@ app.post('/send', (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'your-email@gmail.com',
-            pass: 'your-email-password'
+            user: 'adeyekunadelola2009@gmail.com',
+            pass: 'adeLOLA1.9'
         }
     });
 
     const mailOptions = {
         from: email,
-        to: 'your-email@gmail.com',
+        to: 'adeyekunadelola2009@gmail.com',
         subject: `New message from ${name}`,
         text: message
     };
