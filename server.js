@@ -1,12 +1,16 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
+const path = require('path');
 const app = express();
 const port = 3000;
 
 // Middleware to parse incoming request bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+// Serve static files
+app.use(express.static(path.join(__dirname)));
 
 // Endpoint to handle form submissions
 app.post('/send', (req, res) => {
@@ -31,9 +35,9 @@ app.post('/send', (req, res) => {
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
             console.error('Error occurred:', error);
-            return res.status(500).send('Error occurred: ' + error.message);
+            return res.status(500).sendFile(path.join(__dirname, 'error.html'));
         }
-        res.status(200).send('Message sent: ' + info.response);
+        res.status(200).sendFile(path.join(__dirname, 'success.html'));
     });
 });
 
