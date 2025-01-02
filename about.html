@@ -29,6 +29,8 @@
         .menu-icon {
             display: none;
             cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
         }
 
         .menu-icon span {
@@ -39,17 +41,19 @@
             background-color: #fff;
         }
 
-        nav ul {
-            list-style: none;
+        .nav-links {
             display: flex;
-            gap: 20px;
+            list-style: none;
             padding: 0;
-            margin: 0;
         }
 
-        nav ul li a {
-            color: #fff;
+        .nav-links li {
+            margin: 0 1em;
+        }
+
+        .nav-links a {
             text-decoration: none;
+            color: #fff;
         }
 
         section {
@@ -66,6 +70,9 @@
             color: #fff;
             text-align: center;
             padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
 
         footer ul {
@@ -87,10 +94,10 @@
 
         @media (max-width: 768px) {
             .menu-icon {
-                display: block;
+                display: flex;
             }
 
-            nav ul {
+            .nav-links {
                 display: none;
                 flex-direction: column;
                 width: 100%;
@@ -98,14 +105,16 @@
                 position: absolute;
                 top: 60px;
                 left: 0;
+                z-index: 1;
                 padding: 20px;
             }
 
-            nav ul.active {
+            .nav-links.active {
                 display: flex;
             }
 
-            nav ul li {
+            .nav-links li {
+                text-align: center;
                 margin-bottom: 10px;
             }
 
@@ -123,9 +132,8 @@
                 <span></span>
                 <span></span>
             </div>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="connect.html">Contact</a></li>
                 <li><a href="blog.html">Blog</a></li>
@@ -145,19 +153,18 @@
 
     <footer>
         <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
+            <li><a href="index.html">Home</a></li
             <li><a href="projects.html">Projects</a></li>
             <li><a href="connect.html">Contact</a></li>
             <li><a href="blog.html">Blog</a></li>
         </ul>
-        <p>&copy; 2023 Adela's Portfolio. All rights reserved.</p>
+        <p>&copy; 2025 Adela's Portfolio. All rights reserved.</p>
     </footer>
 
     <script>
         function toggleMenu() {
-            const nav = document.querySelector('nav ul');
-            nav.classList.toggle('active');
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
         }
     </script>
 </body>
