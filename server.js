@@ -17,7 +17,7 @@ app.post('/send', (req, res) => {
         service: 'gmail',
         auth: {
             user: 'adeyekunadelola2009@gmail.com',
-            pass: 'knvg urau lcib nvha'
+            pass: 'fedg izvj fnrv pfgz' // Use the App Password generated from Google
         }
     });
 
@@ -30,7 +30,8 @@ app.post('/send', (req, res) => {
 
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            return res.status(500).send(error.toString());
+            console.error('Error occurred:', error);
+            return res.status(500).send('Error occurred: ' + error.message);
         }
         res.status(200).send('Message sent: ' + info.response);
     });
