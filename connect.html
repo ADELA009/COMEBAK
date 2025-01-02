@@ -7,157 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <style>
-        /* styles.css */
-
-/* General Styles */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-header {
-    background-color: burlywood;
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-    position: relative;
-    z-index: 1000;
-}
-
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.menu-icon {
-    display: none;
-    cursor: pointer;
-}
-
-.menu-icon span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    margin: 5px 0;
-    background-color: #fff;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-    padding: 0;
-    margin: 0;
-}
-
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 999;
-}
-
-nav ul.active {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    background-color: burlywood;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    padding: 20px;
-    z-index: 1000;
-}
-
-nav ul.active li {
-    margin-bottom: 10px;
-}
-
-footer {
-    background-color: burlywood;
-    color: #fff;
-    text-align: center;
-    padding: 20px;
-}
-
-footer ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-}
-
-footer ul li a {
-    color: #fff;
-    text-decoration: none;
-}
-
-footer ul li a:hover {
-    text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-    .menu-icon {
-        display: block;
-    }
-
-    nav ul {
-        display: none;
-    }
-
-    nav ul.active {
-        display: flex;
-    }
-
-    footer ul {
-        flex-direction: column;
-    }
-}
-
-.container {
-    text-align: center;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    color: burlywood;
-}
-
-.button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: burlywood;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.button:hover {
-    background-color: #e0a96d;
-}
-    </style>
     <header>
         <nav>
             <div class="menu-icon" onclick="toggleMenu()">
@@ -207,18 +56,14 @@ h1 {
     <script>
         function toggleMenu() {
             const nav = document.querySelector('nav ul');
-            const overlay = document.querySelector('.overlay');
             nav.classList.toggle('active');
-            overlay.classList.toggle('active');
         }
 
         // Close the menu when a link is clicked
         document.querySelectorAll('nav ul li a').forEach(link => {
             link.addEventListener('click', () => {
                 const nav = document.querySelector('nav ul');
-                const overlay = document.querySelector('.overlay');
                 nav.classList.remove('active');
-                overlay.classList.remove('active');
             });
         });
     </script>
