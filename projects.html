@@ -2,141 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Adela's Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        header {
-            background-color: burlywood;
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .menu-icon {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .menu-icon span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            background-color: #fff;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            padding: 0;
-        }
-
-        .nav-links li {
-            margin: 0 1em;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #fff;
-        }
-
-        section {
-            padding: 50px 10%;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .project {
-            background-color: #f9f9f9;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .project img {
-            max-width: 100%;
-            border-radius: 10px;
-        }
-
-        footer {
-            background-color: burlywood;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        footer ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        footer ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        footer ul li a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: burlywood;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                z-index: 1;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                text-align: center;
-                margin: 1em 0;
-            }
-
-            footer ul {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -157,18 +25,27 @@
 
     <section id="projects">
         <h2>My Projects</h2>
+        <div class="filter-search">
+            <input type="text" id="search-input" placeholder="Search projects...">
+            <select id="filter-select">
+                <option value="all">All</option>
+                <option value="category1">Category 1</option>
+                <option value="category2">Category 2</option>
+                <option value="category3">Category 3</option>
+            </select>
+        </div>
         <div class="project-grid">
-            <div class="project">
+            <div class="project" data-category="category1">
                 <img src="path/to/project1.jpg" alt="Project 1">
                 <h3>Project 1</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quidem.</p>
             </div>
-            <div class="project">
+            <div class="project" data-category="category2">
                 <img src="path/to/project2.jpg" alt="Project 2">
                 <h3>Project 2</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quidem.</p>
             </div>
-            <div class="project">
+            <div class="project" data-category="category3">
                 <img src="path/to/project3.jpg" alt="Project 3">
                 <h3>Project 3</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quidem.</p>
@@ -192,6 +69,31 @@
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
+
+        document.getElementById('search-input').addEventListener('input', function() {
+            const searchValue = this.value.toLowerCase();
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                const projectName = project.querySelector('h3').textContent.toLowerCase();
+                if (projectName.includes(searchValue)) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('filter-select').addEventListener('change', function() {
+            const filterValue = this.value;
+            const projects = document.querySelectorAll('.project');
+            projects.forEach(project => {
+                if (filterValue === 'all' || project.getAttribute('data-category') === filterValue) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        });
     </script>
 </body>
 </html>

@@ -3,126 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About - Adela's Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        header {
-            background-color: burlywood;
-            color: #fff;
-            padding: 1em;
-            text-align: center;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .menu-icon {
-            display: none;
-            cursor: pointer;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .menu-icon span {
-            display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px 0;
-            background-color: #fff;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            padding: 0;
-        }
-
-        .nav-links li {
-            margin: 0 1em;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #fff;
-        }
-
-        section {
-            padding: 50px 10%;
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        footer {
-            background-color: burlywood;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-
-        footer ul {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        footer ul li a {
-            color: #fff;
-            text-decoration: none;
-        }
-
-        footer ul li a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .menu-icon {
-                display: flex;
-            }
-
-            .nav-links {
-                display: none;
-                flex-direction: column;
-                width: 100%;
-                background-color: burlywood;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                z-index: 1;
-                padding: 20px;
-            }
-
-            .nav-links.active {
-                display: flex;
-            }
-
-            .nav-links li {
-                text-align: center;
-                margin-bottom: 10px;
-            }
-
-            footer ul {
-                flex-direction: column;
-            }
-        }
-    </style>
+    <title>Adela's Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -141,15 +23,17 @@
         </nav>
     </header>
 
-    <section id="about">
-        <h2>About Me</h2>
-        <p>I'm Adeyekun Faith, a web developer with three years of experience. I have worked with companies like Apple, Spotify, and Amazon. I graduated from Best Solution Universal College with the second highest JAMB score, pursuing my lifelong dream of web development.</p>
-        <ul>
-            <li>Frontend Web Development</li>
-            <li>Responsive Web Design</li>
-            <li>HTML, CSS, JavaScript</li>
-        </ul>
-    </section>
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p>I'm Adeyekun Faith, a web developer with three years of experience. I have worked with companies like Apple, Spotify, and Amazon. I graduated from Best Solution Universal College with the second highest JAMB score, pursuing my lifelong dream of web development.</p>
+            <ul>
+                <li>Frontend Web Development</li>
+                <li>Responsive Web Design</li>
+                <li>HTML, CSS, JavaScript</li>
+            </ul>
+        </section>
+    </main>
 
     <footer>
         <ul>
@@ -166,6 +50,28 @@
             const navLinks = document.querySelector('.nav-links');
             navLinks.classList.toggle('active');
         }
+
+
+        // Inactivity Refresh
+        let inactivityTime = function () {
+            let time;
+            window.onload = resetTimer;
+            window.onmousemove = resetTimer;
+            window.onmousedown = resetTimer;
+            window.ontouchstart = resetTimer;
+            window.onclick = resetTimer;
+            window.onkeypress = resetTimer;
+
+            function logout() {
+                location.reload();
+            }
+
+            function resetTimer() {
+                clearTimeout(time);
+                time = setTimeout(logout, 300000);
+            }
+        };
+        inactivityTime();
     </script>
 </body>
 </html>

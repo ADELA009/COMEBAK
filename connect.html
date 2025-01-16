@@ -14,7 +14,7 @@
                 <span></span>
                 <span></span>
             </div>
-            <ul>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="projects.html">Projects</a></li>
@@ -39,6 +39,17 @@
 
             <button type="submit" id="send-btn">Send</button>
         </form>
+
+        <div class="contact-info">
+            <h3>Other Ways to Reach Me</h3>
+            <p>Email: <a href="mailto:adeyekunadelola2009@gmail.com" target="_blank">adeyekunadelola2009@gmail.com</a></p>
+            <p>Phone: <a href="tel:+2347043129502" target="_blank">07043129502</a></p>
+            <p>Follow me on social media:</p>
+            <ul>
+                <li><a href="https://github.com/adela009" target="_blank">GitHub</a></li>
+                <li><a href="https://x.com/AdelaAdeyekun" target="_blank">Twitter</a></li>
+            </ul>
+        </div>
     </section>
 
     <footer>
@@ -53,17 +64,11 @@
 
     <script>
         function toggleMenu() {
-            const nav = document.querySelector('nav ul');
-            nav.classList.toggle('active');
+            const navLinks = document.querySelector('.nav-links');
+            const overlay = document.querySelector('.overlay');
+            navLinks.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
-
-        // Close the menu when a link is clicked
-        document.querySelectorAll('nav ul li a').forEach(link => {
-            link.addEventListener('click', () => {
-                const nav = document.querySelector('nav ul');
-                nav.classList.remove('active');
-            });
-        });
     </script>
 </body>
 </html>
