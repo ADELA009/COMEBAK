@@ -5,6 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #FF6347; /* Tomato */
+            color: #FFFFFF; /* White text */
+        }
+        .project-grid .project {
+            background-color: #FFFFFF; /* White background for projects */
+            color: #000000; /* Black text for projects */
+        }
+        nav {
+            background-color: #E5533C; /* Darker Tomato */
+            color: #FFFFFF; /* White text for navbar */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        footer {
+            background-color: #E5533C; /* Darker Tomato */
+            color: #FFFFFF; /* White text for footer */
+        }
+        #theme-toggle {
+            background-color: #FFFFFF; /* White background */
+            color: #E5533C; /* Darker Tomato text */
+            border: 2px solid #E5533C; /* Darker Tomato border */
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        #theme-toggle:hover {
+            background-color: #E5533C; /* Darker Tomato background */
+            color: #FFFFFF; /* White text */
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -36,17 +71,17 @@
         </div>
         <div class="project-grid">
             <div class="project" data-category="category1">
-                <img src="path/to/project1.jpg" alt="Project 1">
+                <img src="path/to/project1.jpg" alt="Project 1" loading="lazy">
                 <h3>Project 1</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quidem.</p>
             </div>
             <div class="project" data-category="category2">
-                <img src="path/to/project2.jpg" alt="Project 2">
+                <img src="path/to/project2.jpg" alt="Project 2" loading="lazy">
                 <h3>Project 2</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quidem.</p>
             </div>
             <div class="project" data-category="category3">
-                <img src="path/to/project3.jpg" alt="Project 3">
+                <img src="path/to/project3.jpg" alt="Project 3" loading="lazy">
                 <h3>Project 3</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam, quidem.</p>
             </div>
@@ -93,6 +128,11 @@
                     project.style.display = 'none';
                 }
             });
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.documentElement.toggleAttribute('data-theme', 'dark');
         });
     </script>
 </body>
