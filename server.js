@@ -1,22 +1,19 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer');
-const twilio = require('twilio');
 const path = require('path');
 const app = express();
 const port = 3000;
 
-// Twilio credentials
-const accountSid = 'your_account_sid';
-const authToken = 'your_auth_token';
-const client = new twilio(accountSid, authToken);
+// Load environment variables from a .env file
+require('dotenv').config();
 
 // Middleware to parse incoming request bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // Serve static files
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Endpoint to handle form submissions
 app.post('/send', (req, res) => {
@@ -26,33 +23,27 @@ app.post('/send', (req, res) => {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'adeyekunadelola2009@gmail.com',
-            pass: 'your-app-password' // Use the App Password generated from Google
+            user: process.env.adeyekunadelola2009,
+            pass: process.env.GMAIL_PASS // Use the App Password generated from Google
         }
     });
 
+    // Email options
     const mailOptions = {
         from: email,
-        to: 'adeyekunadelola2009@gmail.com',
-        subject: `New message from ${name}`,
+        to: process.env.adeyekunadelola2009,
+        subject: `Message from ${name}`,
         text: message
     };
 
+    // Send email
     transporter.sendMail(mailOptions, (error, info) => {
         if (error) {
-            console.error('Error occurred:', error);
-            return res.status(500).send('Error occurred: ' + error.message);
+            console.error('Error sending email:', error);
+            return res.status(500).send('Error sending email');
         }
-
-        // Send SMS using Twilio
-        client.messages.create({
-            body: `New message from ${name} (${email}): ${message}`,
-            from: '+1234567890', // Your Twilio phone number
-            to: '+0987654321' // Your phone number
-        }).then(message => console.log('SMS sent: ' + message.sid))
-          .catch(error => console.error('Error sending SMS:', error));
-
-        res.status(200).send('Message sent: ' + info.response);
+        console.log('Email sent:', info.response);
+        res.status(200).send('Message sent successfully');
     });
 });
 

@@ -88,6 +88,10 @@
             margin: 0;
         }
 
+        nav ul li:hover{
+            background-color: #FF6347;
+        }
+
         nav ul li a {
             color: #fff;
             text-decoration: none;
@@ -177,6 +181,11 @@
             border-radius: 5px;
         }
 
+        a{
+            text-decoration: none;
+            color: #333;
+        }
+
         #send-btn:hover {
             background-color: #E5533C;
         }
@@ -185,7 +194,10 @@
             background-color: #E5533C;
             color: #fff;
             text-align: center;
-            padding: 1em;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 1em;
+            padding-bottom: 1em;
             position: relative;
             margin-top: 50px;
         }
@@ -281,20 +293,6 @@
         .hidden {
             display: none;
         }
-
-        .dark-mode {
-            background-color: #333;
-            color: #fff;
-        }
-
-        .dark-mode header,
-        .dark-mode footer {
-            background-color: #444;
-        }
-
-        .dark-mode nav ul {
-            background-color: #444;
-        }
     </style>
 </head>
 <body>
@@ -308,7 +306,7 @@
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
                 <li><a href="connect.html">Contact</a></li>
                 <li><a href="blog.html">Blog</a></li>
             </ul>
@@ -318,7 +316,7 @@
         <section id="hero">
             <h1>Welcome to My Projects</h1>
             <p>Explore my work and projects.</p>
-            <button>Learn More</button>
+            <button><a href="projects.html">Learn More</a></button>
         </section>
 
         <section id="about">
@@ -397,12 +395,6 @@
         backToTopButton.onclick = function() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
-        };
-
-        // Dark Mode Toggle
-        const darkModeToggle = document.getElementById('dark-mode-toggle');
-        darkModeToggle.onclick = function() {
-            document.body.classList.toggle('dark-mode');
         };
 
         // Inactivity Refresh

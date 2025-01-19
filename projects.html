@@ -26,19 +26,6 @@
             background-color: #E5533C; /* Darker Tomato */
             color: #FFFFFF; /* White text for footer */
         }
-        #theme-toggle {
-            background-color: #FFFFFF; /* White background */
-            color: #E5533C; /* Darker Tomato text */
-            border: 2px solid #E5533C; /* Darker Tomato border */
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        #theme-toggle:hover {
-            background-color: #E5533C; /* Darker Tomato background */
-            color: #FFFFFF; /* White text */
-        }
     </style>
 </head>
 <body>
@@ -128,11 +115,6 @@
                     project.style.display = 'none';
                 }
             });
-        });
-
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.documentElement.toggleAttribute('data-theme', 'dark');
         });
     </script>
 </body>
